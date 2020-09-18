@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: local("Open Sans Light"), url("../fonts/OpenSans-Light.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: local("Open Sans Regular"), url("../fonts/OpenSans-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    /*font-face nesse caso (como em outros) determina que quando no código estiver family open sans, style normal e weght 400, ele puxa o arquivo so src, como esta acontecendo no padrão do reset css*/ 
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: local("Open Sans SemiBold"), url("../fonts/OpenSans-SemiBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: local("Open Sans Bold"), url("../fonts/OpenSans-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Nothing';
+    src: local("Nothing You Could Do"), url("../fonts/NothingYouCouldDo-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Teko';
+    src: local("Teko"), url("../fonts/Teko-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+}
