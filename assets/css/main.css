@@ -99,4 +99,182 @@ hr.divider {
   align-self: center;
 }
 
+#header {
+  min-width: 320px;
+  width: 100%;
+  height: 60px;
+  background-color: var(--gray-5);
+  position: relative;
+  z-index: 3;
+}
+#header .italy {
+  width: 100%;
+  position: absolute;
+  /*o position aqui será absolute em relação ao position relative do header porque por padrão ele pode ficar em qualquer lugar e eu talvez queira mudar, se o pai não tivesse o relative ele ficaria descontrolado porque obedeceria a janela, então ele pode se posicionar em qualquer lugar da tela mas o pai dele tem o controle sobre ele, afinal ele é filho*/
+  top: 60px;
+  /*esse top só funciona quando tem o position definido*/
+  background-color: var(--white);
+  box-decoration-break: none;
+  border-top: var(--green) 6px solid;
+  border-bottom: var(--red) 6px solid;
+  height: 18px;
+  margin: 0;
+}
+#header .logo {
+  position: absolute;
+  transition: all 1s ease-in-out;
+  /*ease sozinho é transition linear, ease-in quase igual ao linear é uma animação uniforme, ease-in-out é um efeito como que acelerando e depois ficando mais lento*/
+  top: 15px;
+  width: 72px;
+  right: calc(50vw - 36px);
+  z-index: 5;
+}
+#header .menu {
+  transition: right 0.5s ease-in-out;
+  width: 300px;
+  height: 100vh;
+  padding-bottom: 50px;
+  /*quando voce da um scroll no chrome para celular seu viewport muda de tamanho e o CSS não reconhece isso, então esse padding é um hack par resolver essa situação*/
+  background-color: var(--gray-7);
+  position: fixed;
+  right: -300px;
+  top: 0;
+  z-index: 4;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#header .menu hr {
+  width: 100%;
+  border-bottom: none;
+  border-color: var(--black-10);
+  margin: 0;
+}
+#header .menu.logged nav ul li.divider {
+  display: flex;
+}
+#header .menu.logged nav ul li.hide-guest {
+  display: flex;
+}
+#header .menu.logged .footer > div {
+  display: flex;
+}
+#header .menu.logged .footer > a.btn-register {
+  display: none;
+}
+#header .menu nav {
+  flex-direction: column;
+}
+#header .menu nav ul {
+  margin: 0;
+  padding: 0;
+  margin-top: 249px;
+  width: 100%;
+  flex-direction: column;
+}
+#header .menu nav ul li {
+  padding: 14px 0;
+  list-style: none;
+  justify-content: center;
+}
+#header .menu nav ul li a {
+  text-decoration: none;
+  color: var(--gray-0);
+}
+#header .menu nav ul li.hide-guest, #header .menu nav ul li.divider {
+  /*o & (e comercial) significa que se o a tiver essa classe ai aplica o estilo, porque o que esta acima vai se aplicar a todas as tags a nesse exemplo, mas se houver (como é o caso) uma tag com classe especifica ai coloca o & (e comercial)*/
+  display: none;
+}
+#header .menu nav ul li hr {
+  margin: 15px 0;
+}
+#header .menu .footer {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+#header .menu .footer > div {
+  display: none;
+  padding: 15px;
+  width: 100%;
+  align-items: center;
+}
+#header .menu .footer > div picture {
+  margin-right: 10px;
+}
+#header .menu .footer > div picture img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+#header .menu .footer > div > div {
+  flex-direction: column;
+  flex: 1;
+}
+#header .menu .footer > div a {
+  color: var(--dark-0);
+  text-decoration: none;
+  font-size: 16px;
+}
+#header .menu .footer > div a small {
+  color: var(--gray-2);
+  font-size: 12px;
+}
+#header .menu .btn-register {
+  margin: 20px;
+  width: calc(300px - 40px);
+  min-width: 130px;
+  border: none;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--green);
+  color: var(--white);
+  border-radius: 6px;
+}
+#header .menu .btn-register:hover {
+  background-color: var(--green-hover);
+}
+#header .menu .btn-register:active {
+  background-color: var(--green-active);
+}
+#header button {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 13px;
+  /*com o padding aumentado a área clicavél fica maior (UI x UX)*/
+}
+#header #btn-open, #header #btn-close {
+  position: absolute;
+  right: 0;
+}
+
+.open-menu {
+  overflow: hidden;
+  /*aplicando esse open menu no body, se não colocar overflow cria a barra lateral, então esse estilo significa "se sari do body, esconde!"*/
+}
+.open-menu #header .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--dark-1);
+  z-index: 4;
+}
+.open-menu #header .menu {
+  right: 0;
+}
+.open-menu #header .logo {
+  right: 87px;
+  width: 120px;
+}
+
 /*# sourceMappingURL=main.css.map */
