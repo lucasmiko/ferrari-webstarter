@@ -70,3 +70,27 @@
         font-weight: bold;
     }
 }
+
+@media (min-width: 1200px) {
+    #footer {
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-bottom: 0;
+        .columns {
+            flex-direction: row;
+            justify-content: space-between;
+            .links {
+                display: flex;
+            }
+            ul {
+                li {
+                    a{
+                        &:hover {
+                            color: var(--white);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
