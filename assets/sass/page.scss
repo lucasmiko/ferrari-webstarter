@@ -23,7 +23,6 @@ header {
     flex-direction: column;
     height: calc(100vh - 140px);
     overflow: auto;
-    margin-bottom: 80px;
     .page-title {
         margin: var(--space);
         width: calc(100% - calc(var(--space) * 2));
@@ -35,6 +34,7 @@ header {
         color: var(--white);
         justify-content: center;
         align-items: center;
+        margin-top: 18px;
         h1 {
             font-size: 23px;
             font-weight: bold;
@@ -42,6 +42,7 @@ header {
         }
     }
     > main {
+        margin-bottom: 80px;
         flex-direction: column;
         .toast {
             position: fixed;
@@ -70,5 +71,18 @@ header {
         button[type=submit], a.black {
             @include button-black;
         }
+    }
+}
+
+@media (min-width: 1200px) {
+    .page {
+        > header {
+            justify-content: flex-start;
+            padding-left: 185px;
+            min-height: 160px;
+            h1 {
+                font-size: 32px;
+            }
+        } 
     }
 }
