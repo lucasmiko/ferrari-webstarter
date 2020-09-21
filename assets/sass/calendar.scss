@@ -49,7 +49,7 @@
     }
     .days {
         display: grid;
-        grid-template-columns: repeat(7, 1fr);/*nesse caso ele esta repetindo 7 vezes o fr, que eh a medida de divisão do grid, em baixo não tem a função, deixei os dois para ter como conhecimento, mas como padrão a funçaõ repeat*/
+        grid-template-columns: repeat(7, 1fr);/*nesse caso ele esta repetindo 7 vezes o fr, que eh a medida de divisão do grid, em baixo não tem a função, deixei os dois para ter como conhecimento, mas como padrão a funçaõ repeat, lembrando que ´so é possível usar em grid layout e se as medidas são iguais*/
         grid-template-rows: 12vw 12vw 12vw 12vw 12vw;
         grid-gap: 10px;
         color: var(--dark-0);
