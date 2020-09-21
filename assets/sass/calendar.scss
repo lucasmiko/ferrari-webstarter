@@ -49,7 +49,7 @@
     }
     .days {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(7, 1fr);/*nesse caso ele esta repetindo 7 vezes o fr, que eh a medida de divisão do grid, em baixo não tem a função, deixei os dois para ter como conhecimento, mas como padrão a funçaõ repeat*/
         grid-template-rows: 12vw 12vw 12vw 12vw 12vw;
         grid-gap: 10px;
         color: var(--dark-0);
@@ -83,6 +83,33 @@
                 &:active {
                     background-color: var(--green-active);
                 }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .calendar {
+        max-width: 992px;
+        .month {
+            margin: var(--space) 0;
+            h2 {
+                font-size: 44px;
+            }
+            .btn-today {
+                display: flex;
+            }
+        }
+        .weekdays {
+            li {
+                font-size: 21px;
+                font-weight: bold;
+            }
+        }
+        .days {
+            grid-template-rows: repeat(5, calc(992px / 7));
+            li {
+                font-size: 38px;
             }
         }
     }
