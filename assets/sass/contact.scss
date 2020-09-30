@@ -55,3 +55,48 @@
         }
     }
 }
+
+@media (min-width: 992px) {
+    #contact {
+        > h2 {
+            font-size: 60px;
+        }
+        > section {
+        flex-direction: row;
+        form, #map {
+            flex: 1;/*flex soma tudo e divide, nesse caso tem dois elemento cada um fica com 1 (50%), se colocasse flex em cada um separado e colocasse flex:2 em um elemento e flex:2 em outro elemento , ai seria 2/3 e 1/3 da tela, seria cada um com um tamanho e colocar flex eh bom porque divide igual nao importa o dispositivo*/
+        }
+        form {
+            max-width: unset;
+            textarea {
+                min-height: 160px;
+                resize: vertical;
+            }
+        }
+        #map {
+            margin-left: 0;
+            height: 570px;
+        }
+    }
+        .contacts {
+            flex-direction: row;
+            li + li {
+                margin-left: var(--space);
+            }
+            /*o li + li poderia ser substituido por:*/
+            /*li { margin-right: var(--space);} &:last-child {margin-right: 0;} mas o modo mais simples é sempre o melhor*/
+        }
+}
+}
+
+@media (min-width: 1200px) {
+    #contact {
+        > section {
+            form {
+                textarea {
+                    min-height: 245px;
+                }
+            }
+        }
+    }
+}
