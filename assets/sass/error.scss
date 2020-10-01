@@ -1,0 +1,41 @@
+@media (min-width: 576px) {
+    #error {
+        header {
+            height: initial;
+            min-height: initial;
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    #error {
+        .columns {
+            flex-direction: row;
+            align-items: center;
+        }
+        img {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    #error {
+        header {
+            h1 {
+                .desktop {
+                    display: flex;
+                }
+                .mobile {
+                    display: none;
+                }
+            }
+        }
+        .column {
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}

@@ -1325,6 +1325,35 @@ header.page-title hr {
     min-height: 245px;
   }
 }
+@media (min-width: 576px) {
+  #error header {
+    height: initial;
+    min-height: initial;
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  #error .columns {
+    flex-direction: row;
+    align-items: center;
+  }
+  #error img {
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 1200px) {
+  #error header h1 .desktop {
+    display: flex;
+  }
+  #error header h1 .mobile {
+    display: none;
+  }
+  #error .column {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
 #auth {
   min-width: 320px;
   width: 100vw;
@@ -1455,6 +1484,107 @@ header.page-title hr {
 }
 #change-password form .page-title {
   margin: 0;
+}
+
+#time-options h3 {
+  margin: 0;
+  margin-bottom: var(--space);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#time-options .options {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#time-options .options label {
+  width: calc(50% - 10px);
+  margin-bottom: var(--space);
+}
+#time-options .options label span {
+  min-width: 130px;
+  border: none;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  background: transparent;
+  display: flex;
+  width: 100%;
+  background-color: var(--gray-10);
+  color: var(--dark-0);
+}
+#time-options .options label span:hover {
+  background-color: var(--black-10);
+}
+#time-options .options label span:active {
+  background-color: var(--black-75);
+}
+#time-options .options label input {
+  display: none;
+}
+#time-options .options label input:checked + span {
+  min-width: 130px;
+  border: none;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  background: transparent;
+  background-color: var(--blue);
+  color: var(--white);
+}
+#time-options .options label input:checked + span:hover {
+  background-color: var(--black-10);
+}
+#time-options .options label input:checked + span:active {
+  background-color: var(--black-75);
+}
+#time-options .options label input:checked + span:hover {
+  background-color: var(--blue-hover);
+}
+#time-options .options label input:checked + span:active {
+  background-color: var(--blue-active);
+}
+
+@media (min-width: 1200px) {
+  #time-options form {
+    max-width: 900px;
+  }
+  #time-options .options {
+    justify-content: flex-start;
+  }
+  #time-options .options label {
+    width: calc(25% - var(--space));
+    margin-right: var(--space);
+  }
+  #time-options h3 {
+    font-size: 22px;
+  }
+}
+#schedules-services .options {
+  flex-direction: column;
+  margin-top: var(--space);
+}
+#schedules-services .options label {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: var(--space);
 }
 
 /*# sourceMappingURL=main.css.map */
