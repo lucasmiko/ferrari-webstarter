@@ -1,3 +1,36 @@
+#error {
+    .columns, .column {
+        flex-direction: column;
+    }
+    header {
+        margin: 0;
+        margin-top: 120px;
+        padding: 0 50px;
+        height: initial;
+        h1 {
+            margin: 0;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 1.5em;
+            b {
+                color: var(--red);
+            }
+            .desktop {
+                display: none;
+            }
+        }
+    }
+    p {
+        padding: 0 50px;
+        font-size: 20px;
+        color: var(--gray-0);
+    }
+    img {
+        width: 100%;
+        margin-bottom: 80px;
+    }
+}
+
 @media (min-width: 576px) {
     #error {
         header {
