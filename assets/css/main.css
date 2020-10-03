@@ -1232,6 +1232,18 @@ header.page-title hr {
   #home .gallery {
     flex-direction: row;
   }
+  #home > header ul {
+    display: flex;
+    color: var(--white);
+    font-size: 30px;
+    margin-bottom: 0;
+  }
+  #home > header ul li + li {
+    margin-left: var(--space);
+  }
+  #home > header h1 {
+    margin-top: unset;
+  }
 }
 @media (min-width: 1200px) {
   #home {
@@ -2060,6 +2072,91 @@ header.page-title hr {
 }
 #schedules-payment > main form .form-creditcard .form-card .faces .back {
   transform: rotateY(180deg);
+}
+
+@media (min-width: 1200px) {
+  #schedules-payment {
+    position: static;
+  }
+  #schedules-payment > header {
+    height: 160px;
+    min-height: 160px;
+  }
+  #schedules-payment > header h1 {
+    display: block;
+  }
+  #schedules-payment > main {
+    align-items: flex-start;
+  }
+  #schedules-payment > main form {
+    max-width: 900px;
+    justify-content: space-between;
+  }
+  #schedules-payment > main form .form-creditcard .form-card {
+    position: static;
+    justify-content: center;
+    padding-left: var(--space);
+  }
+  #schedules-payment > main form .form-creditcard .form-card .faces {
+    width: 100%;
+    margin-top: -17px;
+  }
+  #schedules-payment > main form .form-creditcard .form-card .faces.flipped {
+    transform: rotateY(180deg) translateX(76px);
+  }
+  #schedules-payment > main form .form-creditcard .form-card .faces svg {
+    width: 340px;
+  }
+}
+#schedules-complete main p {
+  margin: var(--space);
+  font-size: 22px;
+  color: var(--gray-0);
+  margin-bottom: var(--space);
+}
+#schedules-complete main p small {
+  display: block;
+  font-size: 16px;
+}
+#schedules-complete main footer.fixed {
+  justify-content: center;
+}
+#schedules-complete main footer.fixed a {
+  min-width: 130px;
+  border: none;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  background: transparent;
+  background-color: var(--green);
+  color: var(--white);
+  padding: 0 var(--space);
+}
+#schedules-complete main footer.fixed a:hover {
+  background-color: var(--black-10);
+}
+#schedules-complete main footer.fixed a:active {
+  background-color: var(--black-75);
+}
+#schedules-complete main footer.fixed a:hover {
+  background-color: var(--green-hover);
+}
+#schedules-complete main footer.fixed a:active {
+  background-color: var(--green-active);
+}
+
+@media (min-width: 1200px) {
+  #schedules-complete main footer.fixed {
+    justify-content: flex-start;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
