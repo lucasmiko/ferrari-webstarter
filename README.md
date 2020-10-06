@@ -1,5 +1,5 @@
 # Projeto Ferrari
-![](assetes/images/android-icon-96x96.png)
+![](assets/images/android-icon-96x96.png)
 ## Pojeto do curso Hcode Lab - Módulo 1
 ### Tecnologias usadas: Web Starter - HTML5 e CSS3
 
