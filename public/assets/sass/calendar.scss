@@ -44,13 +44,13 @@
             justify-content: center;
             padding: 8px 0;
             font-size: 12px;
-            font-weight: bold; 
+            font-weight: bold;
         }
     }
     .days {
         display: grid;
-        grid-template-columns: repeat(7, 1fr);/*nesse caso ele esta repetindo 7 vezes o fr, que eh a medida de divisão do grid, em baixo não tem a função, deixei os dois para ter como conhecimento, mas como padrão a funçaõ repeat, lembrando que ´so é possível usar em grid layout e se as medidas são iguais*/
-        grid-template-rows: 12vw 12vw 12vw 12vw 12vw;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(5, 12vw);
         grid-gap: 10px;
         color: var(--dark-0);
         li {
@@ -64,34 +64,34 @@
             &:hover {
                 background-color: var(--gray-7);
             }
+            &.month-prev, &.month-next {
+                color: var(--gray-2);
+            }
             &.active {
                 background-color: var(--blue);
                 color: var(--white);
                 &:hover {
-                    background-color: var(--blue-hover);
+                    background-color: var(--blue-hover); 
                 }
                 &:active {
-                    background-color: var(--blue-active);
+                    background-color: var(--blue-active); 
                 }
             }
-            &.select {
+            &.selected {
                 background-color: var(--green);
                 color: var(--white);
                 &:hover {
-                    background-color: var(--green-hover);
+                    background-color: var(--green-hover); 
                 }
                 &:active {
-                    background-color: var(--green-active);
+                    background-color: var(--green-active); 
                 }
-            }
-            &.month-prev, &.month-next {
-                color: var(--gray-2)
             }
         }
     }
 }
 
-@media (min-width: 992px) {
+@media(min-width: 992px) {
     .calendar {
         max-width: 992px;
         .month {
@@ -103,7 +103,7 @@
                 display: flex;
             }
         }
-        .weekdays {
+        .weedays {
             li {
                 font-size: 21px;
                 font-weight: bold;
