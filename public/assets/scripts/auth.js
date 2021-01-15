@@ -1,70 +1,107 @@
-const authPage = document.querySelector('main#auth');
+export function appendTemplate(element, tagName, html) {
+    const wrapElement = document.createElement(tagName)
 
-if (authPage) {
-    
-    const hideAuthForms = () => {
+    wrapElement.innerHTML = html
 
-        document.querySelectorAll('#auth form').forEach( el => {
-            el.classList.add('hide')
+    element.append(wrapElement)
+
+    return wrapElement
+}
+
+export function getQueryString() { 
+
+    const queryString = {}
+
+    if (window.location.search) {
+
+        window.location.search.split("?")[1].split("&").forEach(param => {
+
+            param = param.split("=")
+
+            queryString[param[0]] = decodeURIComponent(param[1])
+
         })
-    }
-
-    const showAuthForm = (id) => {
-
-        document.getElementById(id).classList.remove('hide')
 
     }
 
-    const authHash = () => {
-        hideAuthForms()
+    return queryString
 
-        if (sessionStorage.getItem('email')) {
-            document.querySelectorAll('[name=email]')
-            .forEach(el => el.value = sessionStorage.getItem('email'))
+}
+
+export function setFormValues(form, values) {
+
+    Object.keys(values).forEach(key => {
+
+        const field = form.querySelector(`[name=${key}]`)
+
+        switch (field.type) {
+
+            case "select":
+                field.querySelector(`option[value=${values[key]}]`).selected = true
+                break  
+            case "checkbox":
+            case "radio":
+                form.querySelector(`[name=${key}][value=${values[key]}]`).checked = true
+                break
+            default:
+                field.value = values[key]
+
         }
 
-        // Analise o hash na url da window window.location.hash
+    })
 
-        switch (window.location.hash) {
-            case '#register' :
-                showAuthForm('register')
+}
+
+export function getFormValues(form) {
+
+    const values = {}
+
+    form.querySelectorAll("[name]").forEach(field => {
+
+        switch (field.type) {
+
+            case "select":
+                values[field.name] = field.querySelector("option:selected")?.value
                 break
-            case '#login' :
-                showAuthForm('login')
+            case "radio":
+                values[field.name] = form.querySelector(`[name=${field.name}]:checked`)?.value
                 break
-            case '#forget' :
-                showAuthForm('forget')
+            case "checkbox":
+                values[field.name] = []
+                form.querySelectorAll(`[name=${field.name}]:checked`).forEach(checkbox => {
+                    values[field.name].push(checkbox.value)
+                })
                 break
-            case '#reset' :
-                showAuthForm('reset')
-                break
-            default :
-                showAuthForm('auth-email')
-                
+            default:
+                values[field.name] = field.value
+
         }
+
+    })
+
+    return values
+
+}
+
+export function hideAlertError(form) {
+
+    const alertElement = form.querySelector(".alert.danger")
+
+    alertElement.style.display = "none"
+
+}
+
+export function showAlertError(form) {
+
+    return error => {
+
+        const alertElement = form.querySelector(".alert.danger")
+
+        alertElement.innerHTML = error.message
+        alertElement.style.display = "block"
+
     }
 
-    window.addEventListener('load', (e) => {
-        authHash()
-    })
+    
 
-    window.addEventListener('hashchange', (e) => {
-        authHash()
-    })
-
-    const formAuthEmail = document.querySelector('#auth-email')
-
-    formAuthEmail.addEventListener('submit', (e) => {
-
-        e.preventDefault()
-        // e.stopPropagation()
-        const btnSubmit = e.target.querySelector('[type=submit]')
-        btnSubmit.disabled = true
-
-        sessionStorage.setItem('email', formAuthEmail.email.value)
-        location.hash = '#login'
-        btnSubmit.disable = false
-
-        console.log(formAuthemail)
-    })
 }

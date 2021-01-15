@@ -18,125 +18,121 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png"/>
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png"/>
     <link rel="manifest" href="manifest.json"/>
-    <meta name="msapplication-TileColor" content="#E1DFDE"/>
+    <meta name="msapplication-TileColor" content="#E1DEDD"/>
     <meta name="msapplication-TileImage" content="assets/images/ms-icon-144x144.png"/>
-    <meta name="theme-color" content="#E1DFDE"/>
-    <meta name="description" content="Conheça a Ferrari Auto Center"/>
-    <link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
+    <meta name="theme-color" content="#E1DEDD"/>
+    <meta name="description" content="Conheça a Ferrari Auto Center" />
+    <link rel="stylesheet" href="assets/css/main.css" type="text/css" />
 </head>
 <body>
-
+    
     <main id="auth">
 
         <section>
 
-            <a href="index.html"><img src="assets/images/ferrari-logo.svg" alt="Ferrari Logo" /></a>
+            <a href="index.html"><img src="assets/images/ferrari-logo.svg" alt="Logo Ferrari" /></a>
 
             <form id="auth-email">
 
                 <h1>Autenticação</h1>
-                <hr />
-                <div class="field">
 
+                <hr />
+
+                <div class="field">
                     <input type="email" name="email" id="email" />
                     <label for="email">E-mail</label>
+                </div>
+
+                <div class="actions">
+
+                    <a href="auth.html#register" class="link">Criar uma Conta</a>
+                    <button type="submit">Próxima</button>
 
                 </div>
-                    <div class="actions">
-
-                        <a href="auth.html#register" class="link">Criar uma conta</a>
-                        <button type="submit">Próxima</button>
-
-                    </div>
-
 
             </form>
 
             <form id="login" class="hide">
 
                 <h1>Fazer login</h1>
+
                 <hr />
-                <div class="field">
 
-                    <input type="email" name="email" id="email-login" readonly value="lucasmiko@live.com" />
+                <button class="facebook" type="button">Login com Facebook</button>
+
+                <div class="field">
+                    <input type="email" name="email" id="email-login" />
                     <label for="email-login">E-mail</label>
-
                 </div>
 
                 <div class="field">
-
                     <input type="password" name="password" id="password" />
-                    <label for="password">Digite sua senha</label>
-
+                    <label for="password">Digite sua Senha</label>
                 </div>
+
+                <div class="alert danger"></div>
 
                 <div class="actions">
 
                     <div>
                         <a href="auth.html#forget" class="link">Esqueceu sua senha?</a>
-                        <a href="auth.html" class="link">Este não é seu e-mail?</a>
+                        <a href="auth.html#register" class="link">Criar uma Conta</a>
+                        <!--<a href="auth.html" class="link">Este não é o seu e-mail?</a>-->
                     </div>
                     <button type="submit">Login</button>
 
                 </div>
 
-
             </form>
-
+            
             <form id="register" class="hide">
 
                 <h1>Criar conta</h1>
+
                 <hr />
-                <div class="field">
 
-                    <input type="email" name="email" id="email-login" readonly value="lucasmiko@live.com" />
+                <div class="field">
+                    <input type="email" name="email" id="email-login" />
                     <label for="email-login">E-mail</label>
-
                 </div>
 
                 <div class="field">
-
                     <input type="text" name="name" id="name" />
-                    <label for="name">Nome completo</label>
-
+                    <label for="name">Nome Completo</label>
                 </div>
 
                 <div class="field">
-
                     <input type="date" name="birth_at" id="birth_at" />
-                    <label for="birth_at">Data de nascimento</label>
-
+                    <label for="birth_at">Data de Nascimento</label>
                 </div>
 
                 <div class="field">
-
                     <input type="password" name="password" id="password-new" />
-                    <label for="password-new">Crie uma senha</label>
-
+                    <label for="password-new">Crie uma Senha</label>
                 </div>
 
                 <div class="field">
-
                     <input type="password" name="password_confirm" id="password-confirm" />
-                    <label for="password-new">Confirme a senha</label>
-
+                    <label for="password-confirm">Confirme a Senha</label>
                 </div>
+
+                <div class="alert danger"></div>
 
                 <div class="actions">
 
-                        <a href="auth.html#login" class="link">Já tem uma conta?</a>
-                        
+                    <a href="auth.html#login" class="link">Já tem uma conta?</a>
                     <button type="submit">Cadastrar</button>
 
                 </div>
 
-
             </form>
-
+            
             <form id="forget" class="hide">
 
                 <h1>Esqueci a senha</h1>
+
                 <hr />
+
                 <div class="loading-wrap">
                     <div class="loading">
                         <div></div>
@@ -146,7 +142,6 @@
                     </div>
                     <p>Por favor, aguarde...</p>
                 </div>
-                
 
                 <div class="message">
 
@@ -155,25 +150,24 @@
 
                 </div>
 
-
             </form>
 
-            <form id="reset" class="">
+            <form id="reset" class="hide">
 
                 <h1>Redefinir senha</h1>
-                <hr />
-                <div class="field">
 
+                <hr />
+
+                <div class="field">
                     <input type="password" name="password" id="password-reset" />
-                    <label for="password-reset">Crie uma nova senha</label>
+                    <label for="password-reset">Crie uma Nova Senha</label>
+                </div>
+
+                <div class="actions">
+
+                    <button type="submit">Redefinir</button>
 
                 </div>
-                    <div class="actions">
-
-                        <button type="submit">Rdefinir</button>
-
-                    </div>
-
 
             </form>
 
@@ -184,7 +178,5 @@
     </main>
 
     <script src="bundle.js"></script>
-    
 </body>
-
 </html>

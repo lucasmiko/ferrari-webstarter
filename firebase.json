@@ -6,5 +6,12 @@
       "**/.*",
       "**/node_modules/**"
     ]
-  }
+  },
+  "apiKey": "AIzaSyCWb5rYfrfhFJq6HLqCkcRhlEQJQwLjNsg",
+  "authDomain": "ferrari-lucas.firebaseapp.com",
+  "projectId": "ferrari-lucas",
+  "storageBucket": "ferrari-lucas.appspot.com",
+  "messagingSenderId": "187191153159",
+  "appId": "1:187191153159:web:b8559ea4190215dc2490a2",
+  "measurementId": "G-XCEECHGQWL"
 }
