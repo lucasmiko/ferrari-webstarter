@@ -1,107 +1,128 @@
-export function appendTemplate(element, tagName, html) {
-    const wrapElement = document.createElement(tagName)
+import firebase from './firebase-app';
+import { getFormValues, hideAlertError, showAlertError } from './utils';
 
-    wrapElement.innerHTML = html
+const authPage = document.querySelector('main#auth')
 
-    element.append(wrapElement)
+if(authPage){
 
-    return wrapElement
-}
+    const auth = firebase.auth();
 
-export function getQueryString() { 
+    const hideAuthForms = () => {
 
-    const queryString = {}
-
-    if (window.location.search) {
-
-        window.location.search.split("?")[1].split("&").forEach(param => {
-
-            param = param.split("=")
-
-            queryString[param[0]] = decodeURIComponent(param[1])
-
-        })
-
+        document.querySelectorAll("#auth form")
+        .forEach( el => el.classList.add('hide'))
     }
 
-    return queryString
+    const showAuthForm = id => {
 
-}
+        document.getElementById(id).classList.remove('hide')
+    }
 
-export function setFormValues(form, values) {
+    const authHash = () =>{
+        hideAuthForms()
 
-    Object.keys(values).forEach(key => {
-
-        const field = form.querySelector(`[name=${key}]`)
-
-        switch (field.type) {
-
-            case "select":
-                field.querySelector(`option[value=${values[key]}]`).selected = true
-                break  
-            case "checkbox":
-            case "radio":
-                form.querySelector(`[name=${key}][value=${values[key]}]`).checked = true
-                break
-            default:
-                field.value = values[key]
-
+        if(sessionStorage.getItem('email')){
+            document.querySelectorAll('[name=email]')
+            .forEach(el => el.value = sessionStorage.getItem('email'))
         }
 
+        //analise o hash na url da window. window.location.hash
+        switch(window.location.hash){
+            case '#register' :
+                showAuthForm('register')
+                break
+            case '#login' :
+                showAuthForm('login')
+                break
+            case '#forget' :
+                showAuthForm('forget')
+                break
+            case '#reset' :
+                showAuthForm('reset')
+                break
+            default :
+                //showAuthForm('auth-email')
+                showAuthForm('login')
+        }
+    }
+
+    window.addEventListener('load', e => {
+        authHash()
     })
 
-}
+    window.addEventListener('hashchange', e => {
+        authHash()
+    })
 
-export function getFormValues(form) {
+    const formAuthEmail = document.querySelector("#auth-email")
 
-    const values = {}
+    formAuthEmail.addEventListener('submit', e => {
 
-    form.querySelectorAll("[name]").forEach(field => {
+        e.preventDefault()
+        //e.stopPropagation()
+        const btnSubmit = e.target.querySelector('[type=submit]')
+        btnSubmit.disabled = true
 
-        switch (field.type) {
+        sessionStorage.setItem('email', formAuthEmail.email.value)
+        location.hash = '#login'
+        btnSubmit.disabled = false
+        
+    })
 
-            case "select":
-                values[field.name] = field.querySelector("option:selected")?.value
-                break
-            case "radio":
-                values[field.name] = form.querySelector(`[name=${field.name}]:checked`)?.value
-                break
-            case "checkbox":
-                values[field.name] = []
-                form.querySelectorAll(`[name=${field.name}]:checked`).forEach(checkbox => {
-                    values[field.name].push(checkbox.value)
+    const formAuthRegister = document.querySelector("#register")
+
+    formAuthRegister.addEventListener("submit", e => {
+
+        e.preventDefault()
+
+        hideAlertError(formAuthRegister)
+
+        const values = getFormValues(formAuthRegister)
+
+        auth
+            .createUserWithEmailAndPassword(values.email, values.password)
+            .then(response => {
+
+                const { user } = response
+
+                user.updateProfile({
+                    displayName: values.name
                 })
-                break
-            default:
-                values[field.name] = field.value
 
-        }
+                window.location.href = "/"
+
+            })
+            .catch(showAlertError(formAuthRegister))
 
     })
 
-    return values
+    const formAuthLogin = document.querySelector("#login")
 
-}
+    formAuthLogin.addEventListener("submit", e => {
 
-export function hideAlertError(form) {
+        e.preventDefault()
 
-    const alertElement = form.querySelector(".alert.danger")
+        hideAlertError(formAuthLogin)
 
-    alertElement.style.display = "none"
+        const values = getFormValues(formAuthLogin)
 
-}
+        auth
+            .signInWithEmailAndPassword(values.email, values.password)
+            .then(response => window.location.href = "/")
+            .catch(showAlertError(formAuthLogin))
 
-export function showAlertError(form) {
+    })
 
-    return error => {
+    document.querySelector('#login .facebook').addEventListener("click", e => {
 
-        const alertElement = form.querySelector(".alert.danger")
+        const provider = new firebase.auth.FacebookAuthProvider();
 
-        alertElement.innerHTML = error.message
-        alertElement.style.display = "block"
-
-    }
-
-    
-
+        auth.signInWithRedirect(provider);
+        /*
+        auth
+            .signInWithPopup(provider)
+            .then( window.location.href = "/")
+            .catch(showAlertError(formAuthLogin));
+        */
+    })
 }
