@@ -1,31 +1,33 @@
-const authPage = document.querySelector('main#auth');
+import firebase from './firebase-app';
+import { getFormValues, hideAlertError, showAlertError } from './utils';
 
-if (authPage) {
-    
+const authPage = document.querySelector('main#auth')
+
+if(authPage){
+
+    const auth = firebase.auth();
+
     const hideAuthForms = () => {
 
-        document.querySelectorAll('#auth form').forEach( el => {
-            el.classList.add('hide')
-        })
+        document.querySelectorAll("#auth form")
+        .forEach( el => el.classList.add('hide'))
     }
 
-    const showAuthForm = (id) => {
+    const showAuthForm = id => {
 
         document.getElementById(id).classList.remove('hide')
-
     }
 
-    const authHash = () => {
+    const authHash = () =>{
         hideAuthForms()
 
-        if (sessionStorage.getItem('email')) {
+        if(sessionStorage.getItem('email')){
             document.querySelectorAll('[name=email]')
             .forEach(el => el.value = sessionStorage.getItem('email'))
         }
 
-        // Analise o hash na url da window window.location.hash
-
-        switch (window.location.hash) {
+        //analise o hash na url da window. window.location.hash
+        switch(window.location.hash){
             case '#register' :
                 showAuthForm('register')
                 break
@@ -39,32 +41,88 @@ if (authPage) {
                 showAuthForm('reset')
                 break
             default :
-                showAuthForm('auth-email')
-                
+                //showAuthForm('auth-email')
+                showAuthForm('login')
         }
     }
 
-    window.addEventListener('load', (e) => {
+    window.addEventListener('load', e => {
         authHash()
     })
 
-    window.addEventListener('hashchange', (e) => {
+    window.addEventListener('hashchange', e => {
         authHash()
     })
 
-    const formAuthEmail = document.querySelector('#auth-email')
+    const formAuthEmail = document.querySelector("#auth-email")
 
-    formAuthEmail.addEventListener('submit', (e) => {
+    formAuthEmail.addEventListener('submit', e => {
 
         e.preventDefault()
-        // e.stopPropagation()
+        //e.stopPropagation()
         const btnSubmit = e.target.querySelector('[type=submit]')
         btnSubmit.disabled = true
 
         sessionStorage.setItem('email', formAuthEmail.email.value)
         location.hash = '#login'
-        btnSubmit.disable = false
+        btnSubmit.disabled = false
+        
+    })
 
-        console.log(formAuthemail)
+    const formAuthRegister = document.querySelector("#register")
+
+    formAuthRegister.addEventListener("submit", e => {
+
+        e.preventDefault()
+
+        hideAlertError(formAuthRegister)
+
+        const values = getFormValues(formAuthRegister)
+
+        auth
+            .createUserWithEmailAndPassword(values.email, values.password)
+            .then(response => {
+
+                const { user } = response
+
+                user.updateProfile({
+                    displayName: values.name
+                })
+
+                window.location.href = "/"
+
+            })
+            .catch(showAlertError(formAuthRegister))
+
+    })
+
+    const formAuthLogin = document.querySelector("#login")
+
+    formAuthLogin.addEventListener("submit", e => {
+
+        e.preventDefault()
+
+        hideAlertError(formAuthLogin)
+
+        const values = getFormValues(formAuthLogin)
+
+        auth
+            .signInWithEmailAndPassword(values.email, values.password)
+            .then(response => window.location.href = "/")
+            .catch(showAlertError(formAuthLogin))
+
+    })
+
+    document.querySelector('#login .facebook').addEventListener("click", e => {
+
+        const provider = new firebase.auth.FacebookAuthProvider();
+
+        auth.signInWithRedirect(provider);
+        /*
+        auth
+            .signInWithPopup(provider)
+            .then( window.location.href = "/")
+            .catch(showAlertError(formAuthLogin));
+        */
     })
 }
