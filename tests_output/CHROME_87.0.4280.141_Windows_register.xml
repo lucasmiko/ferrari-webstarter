@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="1"
+            tests="3">
+
+  <testsuite name="register"
+    errors="1" failures="1" hostname="" id="" package="register" skipped="0"
+    tests="3" time="17.64" timestamp="">
+  
+    <testcase name="PASSO 1: Acessar a pagina de autenticação " classname="register" time="4.717" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="PASSO2: Tentar fazer cadastro" classname="register" time="7.454" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    <error message="An error occurred while running .setValue() command on &lt;#email-register&gt;: " type="error"><![CDATA[
+    NoSuchElementError: An error occurred while running .setValue() command on &lt;#email-register&gt;: 
+    at SetValue.noSuchElementError (C:\xampp\htdocs\web-starter-hcode-lab\FERRARI\projeto\node_modules\nightwatch\lib\element\command.js:399:12)
+    at Object.errorHandler (C:\xampp\htdocs\web-starter-hcode-lab\FERRARI\projeto\node_modules\nightwatch\lib\api\element-commands\_baseElementCommand.js:42:30)
+    at PeriodicPromise.runAction (C:\xampp\htdocs\web-starter-hcode-lab\FERRARI\projeto\node_modules\nightwatch\lib\utils\periodic-promise.js:64:29)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    ]]></error>
+    
+    </testcase>
+  
+    <testcase name="PASSO 3 : Verificar se autenticou após o cadastro" classname="register" time="5.469" assertions="2">
+
+      <failure message="Testing if the URL is &#39;http://localhost:8080/&#39; in 5000ms - expected &#34;is &#39;http://localhost:8080/&#39;&#34; but got: &#34;http://localhost:8080/auth.html#register&#34; (5369ms)">    at Object.PASSO 3 : Verificar se autenticou após o cadastro (C:\xampp\htdocs\web-starter-hcode-lab\FERRARI\projeto\tests\register.js:39:15)</failure>
+
+    
+    </testcase>
+  
+
+  
+    <system-err>
+        NoSuchElementError: An error occurred while running .setValue() command on &lt;#email-register&gt;: 
+   {&#34;sessionId&#34;:&#34;e252c01da23702621df0fa4dec648020&#34;,&#34;status&#34;:0,&#34;value&#34;:[]}
+       at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    </system-err>
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>
