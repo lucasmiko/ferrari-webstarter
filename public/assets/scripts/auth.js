@@ -1,3 +1,4 @@
+import { getQueryString } from '../../../utils';
 import firebase from './firebase-app';
 import { getFormValues, hideAlertError, showAlertError } from './utils';
 
@@ -108,7 +109,19 @@ if(authPage){
 
         auth
             .signInWithEmailAndPassword(values.email, values.password)
-            .then(response => window.location.href = "/")
+            .then(response =>{
+
+                const values = getQueryString()
+
+                if(values.url) {
+
+                    window.location.href = `http://localhost:8080${values.url}`
+
+                } else {
+                       
+                    window.location.href = "/"
+                }
+            })
             .catch(showAlertError(formAuthLogin))
 
     })
